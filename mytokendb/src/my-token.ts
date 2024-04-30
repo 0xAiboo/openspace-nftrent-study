@@ -2,7 +2,7 @@ import {
   Approval as ApprovalEvent,
   Transfer as TransferEvent
 } from "../generated/myToken/myToken"
-import { Approval, Transfer } from "../generated/schema"
+import { Approval, Transfer, TokenHolder } from "../generated/schema"
 
 export function handleApproval(event: ApprovalEvent): void {
   let entity = new Approval(
@@ -32,4 +32,29 @@ export function handleTransfer(event: TransferEvent): void {
   entity.transactionHash = event.transaction.hash
 
   entity.save()
+  updateTokenBalance(entity);
+}
+
+const updateTokenBalance = (action: Transfer) => {
+  //更新Token持仓
+  // 先更新from地址，在更新to地址
+  const fromInfo = TokenHolder.load(
+    action.token.concat(action.from)
+  );
+  let toInfo = TokenHolder.load(
+    action.token.concat(action.to)
+  );
+  if (fromInfo) {
+    fromInfo.balance = fromInfo.balance.minus(action.value);
+    fromInfo
+
+  }
+  if (toInfo) {
+    toInfo.balance = toInfo.balance.plus(action.value);
+  } else {
+    toInfo = new TokenHolder(action.token.concat(action.to));
+    toInfo.balance = action.value;
+    // toInfo.holder = action.value;
+
+  }
 }
