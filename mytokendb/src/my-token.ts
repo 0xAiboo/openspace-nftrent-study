@@ -46,15 +46,22 @@ const updateTokenBalance = (action: Transfer) => {
   );
   if (fromInfo) {
     fromInfo.balance = fromInfo.balance.minus(action.value);
-    fromInfo
-
+    fromInfo.update_blockNumber = action.blockNumber;
+    fromInfo.update_blockTimestamp = action.blockTimestamp;
+    fromInfo.update_transactionHash = action.transactionHash;
+    fromInfo.save();
   }
   if (toInfo) {
     toInfo.balance = toInfo.balance.plus(action.value);
   } else {
     toInfo = new TokenHolder(action.token.concat(action.to));
     toInfo.balance = action.value;
-    // toInfo.holder = action.value;
-
+    toInfo.holder = action.to;
+    toInfo.token = action.token;
   }
+  toInfo.update_blockNumber = action.blockNumber;
+  toInfo.update_blockTimestamp = action.blockTimestamp;
+  toInfo.update_transactionHash = action.transactionHash;
+  //新增或更新数据
+  toInfo.save();
 }

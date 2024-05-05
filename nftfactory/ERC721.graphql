@@ -22,14 +22,3 @@ type OwnershipTransferred @entity(immutable: true) {
   blockTimestamp: BigInt!
   transactionHash: Bytes!
 }
-type TokenInfo @entity {
-  id: ID!
-  ca: Bytes! # NFT 合约地址
-  tokenId: BigInt! # 代币ID
-  tokenURL: String! # 代币元数据URL
-  name: String! # 代币名称
-  owner: Bytes! # 代币当前所有者地址
-  blockNumber: BigInt! # 交易区块编号
-  blockTimestamp: BigInt! # 交易区块时间戳
-  transactionHash: Bytes! # 交易哈希
-}

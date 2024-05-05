@@ -30,3 +30,23 @@ dataSources:
         - event: OwnershipTransferred(indexed address,indexed address)
           handler: handleOwnershipTransferred
       file: ./src/contract.ts
+templates:
+  - name: ERC721
+    kind: ethereum/contract
+    network: sepolia
+    source:
+      abi: ERC721
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      file: ./src/erc721Mapping.ts
+      entities:
+        - TokenInfo
+      abis:
+        - name: ERC721
+          file: ./abis/ERC721.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          #Transfer(address indexed from, address indexed to, uint256 indexed tokenId)
+          handler: handleTransfer

@@ -8,8 +8,9 @@ import {
   NFTRegesitered,
   OwnershipTransferred
 } from "../generated/schema"
-
+import { ERC721 } from '../generated/templates'
 export function handleNFTCreated(event: NFTCreatedEvent): void {
+  ERC721.create(event.params.nftCA);
   let entity = new NFTCreated(
     event.transaction.hash.concatI32(event.logIndex.toI32())
   )
@@ -23,6 +24,7 @@ export function handleNFTCreated(event: NFTCreatedEvent): void {
 }
 
 export function handleNFTRegesitered(event: NFTRegesiteredEvent): void {
+  ERC721.create(event.params.nftCA);
   let entity = new NFTRegesitered(
     event.transaction.hash.concatI32(event.logIndex.toI32())
   )
