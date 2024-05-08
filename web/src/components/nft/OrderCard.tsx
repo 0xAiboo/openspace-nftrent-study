@@ -47,9 +47,10 @@ export default function OrderCard(props: { order: RentoutOrderEntry }) {
     e.preventDefault();
     console.log(market);
     const { maker, nft_ca, token_id, daily_rent, max_rental_duration, min_collateral, list_endtime, signature } = order
-    await writeContract({
-      abi: marketABI,
-      address: "0x2A3f609202Fc24b5fB30cd1e29b46979bbC0799A" as Address,
+    writeContract({
+      // abi: marketABI,
+      // address: "0x2A3f609202Fc24b5fB30cd1e29b46979bbC0799A" as Address,
+      ...market,
       functionName: 'borrow',
       args: [{ maker, nft_ca, token_id, daily_rent, max_rental_duration, min_collateral, list_endtime }, signature],
       value: parseEther('0.1'),

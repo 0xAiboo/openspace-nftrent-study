@@ -43,6 +43,12 @@ struct RentoutOrder {
 ### 提交内容的：vercel.com上的可访问公共链接 和对应的仓库 github 链接。
 
 ---
+## ‼️ 部署前端地址：<br>
+
+https://openspace-nftrent-study-znpv-a3c47a1te-aiboo968s-projects.vercel.app/
+
+
+---
 
 ## ‼️ 部署合约地址：<br>
 | 名称                         |                    地址                    |
