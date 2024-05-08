@@ -216,7 +216,7 @@ export function useMarketContract() {
   const { chainId } = useAccount();
   return chainId
     ? {
-      address: PROTOCOL_CONFIG[chainId].rentoutMarket,
+      address: PROTOCOL_CONFIG[chainId].rentoutMarket as Address,
       abi: marketABI,
     }
     : undefined;

@@ -5,7 +5,7 @@ import { LOADIG_IMG_URL, DEFAULT_NFT_IMG_URL, PROTOCOL_CONFIG } from "@/config";
 import { useEffect, useState } from "react";
 import { NFTInfo, RentoutOrderEntry, RentoutOrderMsg } from "@/types";
 import { useFetchNFTMetadata } from "@/lib/fetch";
-import { formatUnits, parseEther } from "viem";
+import { Address, formatUnits, parseEther } from "viem";
 import { useMarketContract } from '@/lib/fetch';
 import {
   type BaseError,
@@ -48,7 +48,8 @@ export default function OrderCard(props: { order: RentoutOrderEntry }) {
     console.log(market);
     const { maker, nft_ca, token_id, daily_rent, max_rental_duration, min_collateral, list_endtime, signature } = order
     await writeContract({
-      ...market,
+      abi: marketABI,
+      address: "0x2A3f609202Fc24b5fB30cd1e29b46979bbC0799A" as Address,
       functionName: 'borrow',
       args: [{ maker, nft_ca, token_id, daily_rent, max_rental_duration, min_collateral, list_endtime }, signature],
       value: parseEther('0.1'),
