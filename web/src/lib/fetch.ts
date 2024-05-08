@@ -185,7 +185,7 @@ export function useWriteApproveTx(nft: NFTInfo | null) {
 
   // TODO 查询NFT是否已经授权给市场合约
   const { data: approveTo } = useReadContract({
-    abi: JSON.parse(JSON.stringify(ERC721ABI)),
+    abi: ERC721ABI,
     address: nft?.ca as Address,
     functionName: 'getApproved',
     args: [nft?.tokenId]
