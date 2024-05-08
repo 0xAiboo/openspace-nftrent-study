@@ -186,7 +186,7 @@ export function useWriteApproveTx(nft: NFTInfo | null) {
   // TODO 查询NFT是否已经授权给市场合约
   const { data: approveTo } = useReadContract({
     abi: JSON.parse(JSON.stringify(ERC721ABI)),
-    address: nft?.ca,
+    address: nft?.ca as Address,
     functionName: 'getApproved',
     args: [nft?.tokenId]
 
@@ -203,7 +203,7 @@ export function useWriteApproveTx(nft: NFTInfo | null) {
       // TODO 写合约：调用NFT合约，将 NFT 授权给市场合约
       // https://wagmi.sh/react/guides/write-to-contract#_4-hook-up-the-usewritecontract-hook
       return writeContract({
-        address: nft?.ca,
+        address: nft?.ca as Address,
         abi: ERC721ABI,
         functionName: 'approve',
         args: [mkt?.address, nft?.tokenId]
