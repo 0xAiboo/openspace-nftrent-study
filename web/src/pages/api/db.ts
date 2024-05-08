@@ -14,14 +14,14 @@ export default async function handler(
     if (pwd !== ADMIN_PWD) {
       return res.status(401).json({ error: "Unauthorized" });
     }
-
+    console.log("初始化")
     // 删除表
     await sql`drop table if exists rentout_orders;`;
 
     const result = await sql`CREATE TABLE IF NOT EXISTS rentout_orders (
         id SERIAL PRIMARY KEY,
         chain_id INTEGER NOT NULL,
-        taker TEXT,
+        maker TEXT,
         nft_ca TEXT,
         token_url TEXT,
         token_name TEXT,

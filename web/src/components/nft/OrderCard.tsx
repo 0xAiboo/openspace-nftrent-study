@@ -5,7 +5,8 @@ import { LOADIG_IMG_URL, DEFAULT_NFT_IMG_URL, PROTOCOL_CONFIG } from "@/config";
 import { useEffect, useState } from "react";
 import { NFTInfo, RentoutOrderEntry, RentoutOrderMsg } from "@/types";
 import { useFetchNFTMetadata } from "@/lib/fetch";
-import { formatUnits } from "viem";
+import { formatUnits, parseEther } from "viem";
+import { useMarketContract } from '@/lib/fetch';
 import {
   type BaseError,
   useAccount,
@@ -41,16 +42,20 @@ export default function OrderCard(props: { order: RentoutOrderEntry }) {
   const { data: hash, isPending, error, writeContract } = useWriteContract();
   const { isLoading: isConfirming, isSuccess: isConfirmed } =
     useWaitForTransactionReceipt({ hash });
-
-  const handleOpen = (e: React.FormEvent<HTMLButtonElement>) => {
+  const market = useMarketContract()
+  const handleOpen = async (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    console.log(order);
-    // writeContract({
-    //   address: nft?.ca,
-    //   abi: marketABI,
-    //   functionName: 'borrow',
-    //   args: [mkt?.address, nft?.tokenId]
-    // })
+    console.log(market);
+    const { maker, nft_ca, token_id, daily_rent, max_rental_duration, min_collateral, list_endtime, signature } = order
+    console.log(
+      await writeContract({
+        ...market,
+        functionName: 'borrow',
+        args: [{ maker, nft_ca, token_id, daily_rent, max_rental_duration, min_collateral, list_endtime }, signature],
+        value: parseEther('0.1'),
+      })
+
+    )
     //TODO: 写合约，执行Borrow 交易
   };
 

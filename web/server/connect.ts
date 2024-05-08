@@ -7,7 +7,7 @@ const sqlite3 = verbose();
 const db = new sqlite3.Database(
   "./server/rentf.db",
   sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE,
-  (err) => {
+  (err: any) => {
     // Error handling for connection
     if (err) {
       return console.error(err.message);
@@ -36,7 +36,7 @@ db.serialize(() => {
             listEndTime INTEGER
             createdAt INTEGER
         )`,
-    (err) => {
+    (err: any) => {
       // Error handling for table creation
       if (err) {
         return console.error(err.message);

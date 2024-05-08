@@ -51,7 +51,6 @@ export default function Rentout() {
   const approveHelp = useWriteApproveTx(selectedNft);
 
   const handleApprove = async () => {
-    console.log(approveHelp)
     await approveHelp.sendTx();
   };
 
