@@ -206,7 +206,7 @@ export function useWriteApproveTx(nft: NFTInfo | null) {
         address: nft?.ca as Address,
         abi: ERC721ABI,
         functionName: 'approve',
-        args: [mkt?.address, nft?.tokenId]
+        args: [mkt!.address, nft!.tokenId]
       })
     },
   };
