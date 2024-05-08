@@ -43,7 +43,7 @@ contract RenftMarket is IRenftMarket, EIP712 {
             revert ErrorOrderRented(order);
         if (order.list_endtime < block.timestamp)
             revert ErrorOrderExpired(order);
-
+ 
         if (msg.value < order.min_collateral)
             revert ErrorMoneyInsufficient(msg.value, order.min_collateral);
         // 验证挂单

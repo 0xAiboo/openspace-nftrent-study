@@ -47,15 +47,12 @@ export default function OrderCard(props: { order: RentoutOrderEntry }) {
     e.preventDefault();
     console.log(market);
     const { maker, nft_ca, token_id, daily_rent, max_rental_duration, min_collateral, list_endtime, signature } = order
-    console.log(
-      await writeContract({
-        ...market,
-        functionName: 'borrow',
-        args: [{ maker, nft_ca, token_id, daily_rent, max_rental_duration, min_collateral, list_endtime }, signature],
-        value: parseEther('0.1'),
-      })
-
-    )
+    await writeContract({
+      ...market,
+      functionName: 'borrow',
+      args: [{ maker, nft_ca, token_id, daily_rent, max_rental_duration, min_collateral, list_endtime }, signature],
+      value: parseEther('0.1'),
+    })
     //TODO: 写合约，执行Borrow 交易
   };
 
