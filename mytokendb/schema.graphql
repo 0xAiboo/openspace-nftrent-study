@@ -19,6 +19,7 @@ type Transfer @entity(immutable: true) {
   blockTimestamp: BigInt!
   transactionHash: Bytes!
 }
+
 type TokenHolder @entity(immutable: true) {
   id: Bytes!
   token: Bytes! # address

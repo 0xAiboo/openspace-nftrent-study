@@ -1,8 +1,11 @@
 {
   "sepolia": {
-    "myToken": {
-      "address": "0xa22947eb19e92ed33dd2e9c6ec8523e64da6b957",
-      "startBlock": 5780758
+    "MT": {
+      "address": "0x190873386803Db026fd185936Dbf2A6E81457810",
+      "startBlock": 5789746
+    },
+    "ZK01": {
+      "address": "0x0a5B53232685B8291255C3EA2e6D30987143F2e8"
     }
   }
 }
