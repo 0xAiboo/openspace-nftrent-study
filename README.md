@@ -45,7 +45,7 @@ struct RentoutOrder {
 ---
 ## ‼️ 部署前端地址：<br>
 
-https://openspace-nftrent-study-znpv-git-renftmarket-aiboo968s-projects.vercel.app/
+https://openspace-nftrent-study-znpv.vercel.app/
 
 
 ---
