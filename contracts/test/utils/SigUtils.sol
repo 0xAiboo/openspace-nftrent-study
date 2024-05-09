@@ -13,7 +13,7 @@ contract SigUtils {
     // keccak256("Permit(address owner,address spender,uint256 value,uint256 nonce,uint256 deadline)");
     bytes32 public constant PERMIT_TYPEHASH =
         keccak256(
-            "RentoutOrder(address maker, address nft_ca, uint256 token_id, uint256 daily_rent, uint256 max_rental_duration, uint256 min_collateral, uint256 list_endtime)"
+            "RentoutOrder(address maker,address nft_ca,uint256 token_id,uint256 daily_rent,uint256 max_rental_duration,uint256 min_collateral,uint256 list_endtime)"
         );
 
     struct RentoutOrder {

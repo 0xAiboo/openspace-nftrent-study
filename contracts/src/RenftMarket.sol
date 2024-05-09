@@ -23,7 +23,7 @@ contract RenftMarket is IRenftMarket, EIP712 {
     string private constant version = "1";
     bytes32 private constant _PERMIT_TYPEHASH =
         keccak256(
-            "RentoutOrder(address maker, address nft_ca, uint256 token_id, uint256 daily_rent, uint256 max_rental_duration, uint256 min_collateral, uint256 list_endtime)"
+            "RentoutOrder(address maker,address nft_ca,uint256 token_id,uint256 daily_rent,uint256 max_rental_duration,uint256 min_collateral,uint256 list_endtime)"
         );
     constructor() EIP712(marketName, version) {}
 
