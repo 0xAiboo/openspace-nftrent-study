@@ -10,7 +10,7 @@ import SelectNFT from "@/components/nft/SelectNFT";
 import { NFTInfo, RentoutOrderMsg } from "@/types";
 import { useUserNFTs, useWriteApproveTx } from "@/lib/fetch";
 import { useAccount } from "wagmi";
-
+import { verifyingOrder } from "@/pages/api/user/rentout";
 import { signTypedData, getAccount } from "@wagmi/core";
 import { config, eip721Types, PROTOCOL_CONFIG, wagmiConfig } from "@/config";
 import { parseUnits } from "viem";
@@ -94,7 +94,8 @@ export default function Rentout() {
       });
 
       console.log("signature", signature);
-
+      const ok = await verifyingOrder(chainId, order, signature);
+      if (!ok) return;
       const res = await fetch("/api/user/rentout", {
         method: "POST",
         headers: {

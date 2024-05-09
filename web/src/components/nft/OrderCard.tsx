@@ -45,7 +45,7 @@ export default function OrderCard(props: { order: RentoutOrderEntry }) {
   const market = useMarketContract()
   const handleOpen = async (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    console.log(market);
+    console.log(order);
     const { maker, nft_ca, token_id, daily_rent, max_rental_duration, min_collateral, list_endtime, signature } = order
     writeContract({
       // abi: marketABI,
@@ -55,6 +55,8 @@ export default function OrderCard(props: { order: RentoutOrderEntry }) {
       args: [{ maker, nft_ca, token_id, daily_rent, max_rental_duration, min_collateral, list_endtime }, signature],
       value: parseEther('0.1'),
     })
+    console.log(error)
+
     //TODO: 写合约，执行Borrow 交易
   };
 

@@ -16,6 +16,7 @@ export default async function handler(
       } else {
         const orderInfo = order as RentoutOrderMsg;
         const ok = await verifyingOrder(chainId, orderInfo, signature);
+        console.log(ok);
         if (ok) {
           // 验证签名通过后，将订单存储到数据库
           await saveOrder(chainId, orderInfo, nft as NFTInfo, signature);
@@ -35,12 +36,23 @@ export default async function handler(
 }
 
 // 校验出租订单签名 https://wagmi.sh/core/api/actions/verifyTypedData#message
-function verifyingOrder(
+export function verifyingOrder(
   chainId: any,
   order: any,
   signature: any
 ): Promise<boolean> {
   // TODO: 验证订单签名
+  // console.log(221312)
+  // console.log(verifyTypedData(wagmiConfig, {
+  //   chainId,
+  //   domain: PROTOCOL_CONFIG[chainId].domain,
+  //   types: eip721Types,
+  //   message: order,
+  //   primaryType: "RentoutOrder",
+  //   address: order.maker,
+  //   signature
+  // }))
+  // return false as any;
   return verifyTypedData(wagmiConfig, {
     chainId,
     domain: PROTOCOL_CONFIG[chainId].domain,

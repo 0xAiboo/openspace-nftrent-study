@@ -61,9 +61,9 @@ export const PROTOCOL_CONFIG = {
       name: DomainName,
       version: DomainVersion,
       chainId: 11155111,
-      verifyingContract: "0x2A3f609202Fc24b5fB30cd1e29b46979bbC0799A"
+      verifyingContract: "0x0a8e35002CD703ee80f6BF225271457e3F05260D"
     },
-    rentoutMarket: "0x2A3f609202Fc24b5fB30cd1e29b46979bbC0799A", // TODO: 配置出租市场合约地址
+    rentoutMarket: "0x0a8e35002CD703ee80f6BF225271457e3F05260D", // TODO: 配置出租市场合约地址
   },
 } as const;
 
@@ -71,15 +71,6 @@ export const PROTOCOL_CONFIG = {
 export const eip721Types = {
   // 出租NFT的挂单信息结构
   RentoutOrder: [
-    //   struct RentoutOrder {
-    //     address maker; // 出租方地址
-    //     address nft_ca; // NFT合约地址
-    //     uint256 token_id; // NFT tokenId
-    //     uint256 daily_rent; // 每日租金
-    //     uint256 max_rental_duration; // 最大租赁时长
-    //     uint256 min_collateral; // 最小抵押
-    //     uint256 list_endtime; // 挂单结束时间
-    // }
     // TODO: 定义出租订单结构数据
     { name: "maker", type: "address" },
     { name: "nft_ca", type: "address" },
