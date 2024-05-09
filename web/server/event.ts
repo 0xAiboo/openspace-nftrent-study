@@ -95,12 +95,12 @@ async function watchTransferEvents() {
 
 async function watchNewBlock() {
   client.watchBlocks({
-    onBlock: (block) => {
+    onBlock: (block: { hash: any; number: any; }) => {
       console.log("block:", block.hash, block.number);
     },
   });
   client.watchBlockNumber({
-    onBlockNumber: (blockNumber) => {
+    onBlockNumber: (blockNumber: any) => {
       console.log("blockNumber:", blockNumber);
     },
   });
