@@ -12,13 +12,13 @@ contract RenftMarketScript is Script {
 
     function run() public {
         vm.startBroadcast(msg.sender);
-        // NFTFactory _NFTFactory = new NFTFactory();
-        // _NFTFactory.deployNFT(
-        //     "Nothan",
-        //     "N",
-        //     "ipfs://Qmdqw4sXTEzwCKEKiRDJ7cuBr3uD9MTjdn92pU7PHbZjVG/",
-        //     1000
-        // );
+        NFTFactory _NFTFactory = new NFTFactory();
+        _NFTFactory.deployNFT(
+            "Nothan",
+            "N",
+            "ipfs://Qmdqw4sXTEzwCKEKiRDJ7cuBr3uD9MTjdn92pU7PHbZjVG/",
+            1000
+        );
         new RenftMarket();
     }
 }
